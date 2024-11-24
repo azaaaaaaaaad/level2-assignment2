@@ -9,5 +9,7 @@ router.post('/create-stationary', StationaryControllers.createStationary)
 
 router.get('/', StationaryControllers.getStationary)
 
+router.get('/:stationaryId', StationaryControllers.getSingleStationary)
+
 
 export const StationaryRoutes = router;
