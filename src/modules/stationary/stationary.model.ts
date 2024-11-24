@@ -1,8 +1,8 @@
-import { LintMessage } from './../../../node_modules/@typescript-eslint/utils/dist/ts-eslint/eslint/ESLintShared.d';
-import { Schema, model, connect } from 'mongoose';
-import { Stationary } from './stationary.interface';
 
-const stationarySchema = new Schema<Stationary>({
+import { Schema, model } from 'mongoose';
+import { IStationary } from './stationary.interface';
+
+const stationarySchema = new Schema<IStationary>({
   name: { type: String, required: true },
   brand: { type: String, required: true },
   price: { type: Number, required: true },
@@ -18,3 +18,7 @@ const stationarySchema = new Schema<Stationary>({
   quantity: { type: Number, required: true },
   inStock: { type: Boolean, required: true },
 });
+
+
+
+export const StationaryModel =  model<IStationary>('Stationary', stationarySchema)
