@@ -9,7 +9,7 @@ app.use(express.json())
 app.use(cors())
 
 //application routes
-app.use('/api/products/stationary', StationaryRoutes)
+app.use('/api/products', StationaryRoutes)
 
 const getAController =(req:Request, res:Response) => {
   const a =10

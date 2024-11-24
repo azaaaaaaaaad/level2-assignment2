@@ -23,7 +23,7 @@
 //   }
 // };
 
-// export const StudentControllers = {
+// export const StationaryControllers = {
 //   createStationary,
 // };
 
@@ -41,18 +41,7 @@ const createStationary = async (req: Request, res: Response) => {
     res.status(200).json({
       message: 'Product created successfully',
       success: true,
-      data: {
-        _id: result._id,
-        name: result.name,
-        brand: result.brand,
-        price: result.price,
-        category: result.category,
-        description: result.description,
-        quantity: result.quantity,
-        inStock: result.inStock,
-        createdAt: result.createdAt,
-        updatedAt: result.updatedAt,
-      },
+      data: result,
       timeStamp: new Date().toISOString(), // Include the timestamp
     });
   } catch (error: any) {
@@ -65,6 +54,26 @@ const createStationary = async (req: Request, res: Response) => {
   }
 };
 
-export const StudentControllers = {
+const getStationary = async(req: Request, res: Response) => {
+    try {
+        const result = await StationaryServices.getStationaryIntoDb()
+        res.status(200).json({
+            message: 'Product retrieved successfully',
+            success: true,
+            data: result,
+            timeStamp: new Date().toISOString(), // Include the timestamp
+          });
+    } catch (error: any) {
+        console.log(error);
+        res.status(500).json({
+          success: false,
+          message: error.message || 'Something went wrong',
+          error: error,
+        });
+      }
+}
+
+export const StationaryControllers = {
   createStationary,
+  getStationary
 };

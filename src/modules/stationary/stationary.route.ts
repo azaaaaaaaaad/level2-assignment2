@@ -1,11 +1,13 @@
 
 import express from 'express'
-import { StudentControllers } from './stationary.controller'
+import { StationaryControllers } from './stationary.controller'
 
 const router = express.Router()
 
 //will call controllers
-router.post('/create-stationary', StudentControllers.createStationary)
+router.post('/create-stationary', StationaryControllers.createStationary)
+
+router.get('/', StationaryControllers.getStationary)
 
 
 export const StationaryRoutes = router;
