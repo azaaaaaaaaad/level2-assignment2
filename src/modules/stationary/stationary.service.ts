@@ -21,15 +21,15 @@ const getSingleStationaryFromDb = async(_id:string) => {
 //     return result
 // }
 
-// const deleteSingleStationaryFromDb = async(_id:string) => {
-//     const result = await StationaryModel.findByIdAndDelete({_id})
-//     return result
-// }
+const deleteSingleStationaryFromDb = async(_id:string) => {
+    const result = await StationaryModel.findByIdAndDelete({_id})
+    return result
+}
 
 export const StationaryServices = {
     createStationaryIntoDb,
     getStationaryFromDb,
     getSingleStationaryFromDb,
     // updateSingleStationaryFromDb,
-    // deleteSingleStationaryFromDb,
+    deleteSingleStationaryFromDb,
 }

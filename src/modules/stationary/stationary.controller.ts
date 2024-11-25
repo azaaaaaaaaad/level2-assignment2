@@ -96,30 +96,30 @@ const getSingleStationary = async (req: Request, res: Response) => {
 //       }
 // }
 
-// const deleteSingleStationary = async (req: Request, res: Response) => {
-//   try {
-//     const { stationaryId } = req.params;
-//     const result =
-//       await StationaryServices.deleteSingleStationaryFromDb(stationaryId);
-//     res.status(200).json({
-//       message: 'Product deleted successfully',
-//       success: true,
-//       data: result,
-//     });
-//   } catch (error: any) {
-//     console.log(error);
-//     res.status(500).json({
-//         success: false,
-//         message: error.message || 'Something went wrong',
-//         error: error,
-//       });
-//   }
-// };
+const deleteSingleStationary = async (req: Request, res: Response) => {
+  try {
+    const { stationaryId } = req.params;
+    const result =
+      await StationaryServices.deleteSingleStationaryFromDb(stationaryId);
+    res.status(200).json({
+      message: 'Product deleted successfully',
+      success: true,
+      data: result,
+    });
+  } catch (error: any) {
+    console.log(error);
+    res.status(500).json({
+        success: false,
+        message: error.message || 'Something went wrong',
+        error: error,
+      });
+  }
+};
 
 export const StationaryControllers = {
   createStationary,
   getStationary,
   getSingleStationary,
   //   updateSingleStationary,
-  //   deleteSingleStationary,
+    deleteSingleStationary,
 };
