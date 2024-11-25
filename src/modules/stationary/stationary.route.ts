@@ -11,7 +11,7 @@ router.get('/', StationaryControllers.getStationary)
 
 router.get('/:stationaryId', StationaryControllers.getSingleStationary)
 
-// router.put('/:stationaryId', StationaryControllers.updateSingleStationary)
+router.put('/:stationaryId', StationaryControllers.updateSingleStationary)
 
 router.delete('/:stationaryId', StationaryControllers.deleteSingleStationary)
 
