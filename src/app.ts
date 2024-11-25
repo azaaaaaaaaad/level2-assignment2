@@ -1,5 +1,4 @@
 
-
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import { StationaryRoutes } from './modules/stationary/stationary.route';
