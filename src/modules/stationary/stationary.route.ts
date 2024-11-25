@@ -1,19 +1,23 @@
+import { OrderControllers } from './../order/order.controller';
+import express from 'express';
+import { StationaryControllers } from './stationary.controller';
 
-import express from 'express'
-import { StationaryControllers } from './stationary.controller'
-
-const router = express.Router()
+const router = express.Router();
 
 //will call controllers
-router.post('/create-stationary', StationaryControllers.createStationary)
+router.post('/create-stationary', StationaryControllers.createStationary);
 
-router.get('/', StationaryControllers.getStationary)
+router.get('/', StationaryControllers.getStationary);
 
-router.get('/:stationaryId', StationaryControllers.getSingleStationary)
+router.get('/:stationaryId', StationaryControllers.getSingleStationary);
 
-router.put('/:stationaryId', StationaryControllers.updateSingleStationary)
+router.put('/:stationaryId', StationaryControllers.updateSingleStationary);
 
-router.delete('/:stationaryId', StationaryControllers.deleteSingleStationary)
+router.delete('/:stationaryId', StationaryControllers.deleteSingleStationary);
 
+router.post('/orders', OrderControllers.createOrder)
 
 export const StationaryRoutes = router;
+
+
+

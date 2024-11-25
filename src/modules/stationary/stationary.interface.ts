@@ -1,25 +1,14 @@
-import { ObjectId } from "mongoose";
-
-
 export type IStationary = {
-  name: string; 
-  brand: string; 
-  price: number; 
+  name: string;
+  brand: string;
+  price: number;
   category:
     | 'Writing'
     | 'Office Supplies'
     | 'Art Supplies'
     | 'Educational'
-    | 'Technology'; 
-  description: string; 
-  quantity: number; 
-  inStock: boolean; 
-};
-
-
-export type IOrder = {
-  email: string;
-  product: ObjectId;  // Product reference (ObjectId)
+    | 'Technology';
+  description: string;
   quantity: number;
-  totalPrice: number;  // Total price (product price * quantity)
-}
+  inStock: boolean;
+};

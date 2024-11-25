@@ -2,15 +2,18 @@ import { Schema, model } from 'mongoose';
 import { IStationary } from './stationary.interface';
 
 const stationarySchema = new Schema<IStationary>({
-  name: { type: String, required: [true, 'name is required'], trim: true,
+  name: {
+    type: String,
+    required: [true, 'name is required'],
+    trim: true,
     validate: {
-      validator:function(value: string){
-        const nameStr = value.charAt(0).toUpperCase()+value.slice(1)
-        return nameStr === value
+      validator: function (value: string) {
+        const nameStr = value.charAt(0).toUpperCase() + value.slice(1);
+        return nameStr === value;
       },
-      message: `{VALUE} is not it capitalize format}`
-    }
-   },
+      message: `{VALUE} is not it capitalize format}`,
+    },
+  },
   brand: { type: String, required: [true, 'brand is required'] },
   price: { type: Number, required: [true, 'price is required'] },
   category: {

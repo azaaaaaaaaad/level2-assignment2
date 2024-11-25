@@ -1,21 +1,50 @@
-import express, { Application, Request, Response } from 'express'
-import cors from 'cors'
-import { StationaryRoutes } from './modules/stationary/stationary.route'
+// import express, { Application, Request, Response } from 'express'
+// import cors from 'cors'
+// import { StationaryRoutes } from './modules/stationary/stationary.route'
+// import { OrderRoutes } from './modules/order/order.route'
 
-const app: Application = express()
+// const app: Application = express()
 
-//parser
-app.use(express.json())
-app.use(cors())
+// //parser
+// app.use(express.json())
+// app.use(cors())
 
-//application routes
-app.use('/api/products', StationaryRoutes)
+// //application routes
+// app.use('/api/products', StationaryRoutes)
 
-const getAController =(req:Request, res:Response) => {
-  const a =10
-  res.send(a)
-}
+// app.use('/api/orders', OrderRoutes)
 
-app.get('/', getAController)
+// const getAController =(req:Request, res:Response) => {
+//   const a =10
+//   res.send(a)
+// }
+
+// app.get('/', getAController)
+
+// export default app;
+
+import express, { Application, Request, Response } from 'express';
+import cors from 'cors';
+import { StationaryRoutes } from './modules/stationary/stationary.route';
+import { OrderRoutes } from './modules/order/order.route';
+
+const app: Application = express();
+
+// Middleware to parse JSON
+app.use(express.json());
+app.use(cors());
+
+// Application routes
+app.use('/api/products', StationaryRoutes);
+app.use('/api/orders', OrderRoutes);
+
+// Placeholder route for testing
+const getAController = (req: Request, res: Response) => {
+  const a = 10;
+  res.send(a);
+};
+app.get('/', getAController);
+
 
 export default app;
+

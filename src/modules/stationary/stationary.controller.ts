@@ -65,11 +65,10 @@ const getSingleStationary = async (req: Request, res: Response) => {
   }
 };
 
-
 const updateSingleStationary = async (req: Request, res: Response) => {
   try {
-    const { stationaryId } = req.params;  
-    const { price, quantity } = req.body;  
+    const { stationaryId } = req.params;
+    const { price, quantity } = req.body;
 
     if (price === undefined && quantity === undefined) {
       return res.status(400).json({
@@ -84,7 +83,10 @@ const updateSingleStationary = async (req: Request, res: Response) => {
     if (quantity !== undefined) updatedData.quantity = quantity;
 
     // Call the service to update the product
-    const result = await StationaryServices.updateSingleStationaryFromDb(stationaryId, updatedData);
+    const result = await StationaryServices.updateSingleStationaryFromDb(
+      stationaryId,
+      updatedData,
+    );
 
     // Check if the product was found and updated
     if (!result) {
@@ -113,9 +115,6 @@ const updateSingleStationary = async (req: Request, res: Response) => {
   }
 };
 
-
-
-
 const deleteSingleStationary = async (req: Request, res: Response) => {
   try {
     const { stationaryId } = req.params;
@@ -129,10 +128,10 @@ const deleteSingleStationary = async (req: Request, res: Response) => {
   } catch (error: any) {
     console.log(error);
     res.status(500).json({
-        success: false,
-        message: error.message || 'Something went wrong',
-        error: error,
-      });
+      success: false,
+      message: error.message || 'Something went wrong',
+      error: error,
+    });
   }
 };
 
@@ -140,6 +139,6 @@ export const StationaryControllers = {
   createStationary,
   getStationary,
   getSingleStationary,
-    updateSingleStationary,
-    deleteSingleStationary,
+  updateSingleStationary,
+  deleteSingleStationary,
 };
