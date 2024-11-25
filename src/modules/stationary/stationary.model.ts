@@ -1,21 +1,26 @@
+
 import { Schema, model } from 'mongoose';
 import { IStationary } from './stationary.interface';
+import validator from 'validator';
 
 const stationarySchema = new Schema<IStationary>({
   name: {
     type: String,
     required: [true, 'name is required'],
     trim: true,
-    validate: {
-      validator: function (value: string) {
-        const nameStr = value.charAt(0).toUpperCase() + value.slice(1);
-        return nameStr === value;
-      },
-      message: `{VALUE} is not it capitalize format}`,
-    },
   },
-  brand: { type: String, required: [true, 'brand is required'] },
-  price: { type: Number, required: [true, 'price is required'] },
+  brand: { 
+    type: String, 
+    required: [true, 'brand is required'] 
+  },
+  price: { 
+    type: Number, 
+    required: [true, 'price is required'],
+    validate: {
+      validator: (value: number) => validator.isFloat(value.toString(), { min: 0 }),
+      message: 'Price must be a positive number'
+    }
+  },
   category: {
     type: String,
     enum: {
@@ -30,9 +35,18 @@ const stationarySchema = new Schema<IStationary>({
     },
     required: true,
   },
-  description: { type: String, required: [true, 'description is required'] },
-  quantity: { type: Number, required: [true, 'quantity is required'] },
-  inStock: { type: Boolean, required: [true, 'inStock is required'] },
+  description: { 
+    type: String, 
+    required: [true, 'description is required'] 
+  },
+  quantity: { 
+    type: Number, 
+    required: [true, 'quantity is required'] 
+  },
+  inStock: { 
+    type: Boolean, 
+    required: [true, 'inStock is required'] 
+  },
 });
 
 export const StationaryModel = model<IStationary>(

@@ -1,14 +1,26 @@
 import { Request, Response } from 'express';
 import { StationaryServices } from './stationary.service';
 
+
 const createStationary = async (req: Request, res: Response) => {
   try {
-    const { stationary: stationaryData } = req.body;
+    const { name, brand, price, category, description, quantity, inStock } = req.body;
 
-    const result =
-      await StationaryServices.createStationaryIntoDb(stationaryData);
+    // Create the stationary data object
+    const stationaryData = {
+      name,
+      brand,
+      price,
+      category,
+      description,
+      quantity,
+      inStock,
+    };
 
-    // Assuming 'result' contains the necessary fields like _id, name, brand, etc.
+    // Call the service to create the stationary item in the database
+    const result = await StationaryServices.createStationaryIntoDb(stationaryData);
+
+    // Respond with a success message
     res.status(200).json({
       message: 'Product created successfully',
       success: true,
@@ -24,6 +36,9 @@ const createStationary = async (req: Request, res: Response) => {
     });
   }
 };
+
+
+
 
 const getStationary = async (req: Request, res: Response) => {
   try {
